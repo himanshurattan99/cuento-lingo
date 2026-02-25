@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import { BookOpen } from 'lucide-react'
 import { Home } from './pages/Home'
+import { StoryView } from './pages/StoryView'
 import './App.css'
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
       {/* App Routes */}
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/story" element={<StoryView />} />
       </Routes>
 
       {/* Footer */}

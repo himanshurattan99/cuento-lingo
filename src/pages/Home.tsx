@@ -1,10 +1,13 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { stories } from '../data/stories'
 import { StoryCard } from '../components/StoryCard'
 
 export const Home = () => {
     // Convert stories object map to an array for rendering
     const allStories = Object.values(stories)
+
+    const navigate = useNavigate()
 
     // Track the currently selected difficulty filter
     const [filterDifficulty, setFilterDifficulty] = useState<'All' | 'Beginner' | 'Intermediate' | 'Advanced'>('All')
@@ -15,7 +18,7 @@ export const Home = () => {
     )
 
     return (
-        <main className="w-full max-w-6xl mx-auto py-12 px-4 flex-1">
+        <main className="w-full max-w-6xl mx-auto py-12 px-4 flex-1 flex flex-col">
             {/* Page Header */}
             <div className="mb-12 text-center">
                 <h2 className="mb-6 text-5xl font-extrabold tracking-tight text-gray-900">
@@ -49,7 +52,7 @@ export const Home = () => {
                     <StoryCard
                         key={story.id}
                         story={story}
-                        onClick={() => {/* TODO: navigate to story */ }}
+                        onClick={() => navigate(`/story?id=${story.id}`)}
                     />
                 ))}
             </div>
