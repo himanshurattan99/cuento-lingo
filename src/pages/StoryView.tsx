@@ -1,6 +1,7 @@
 import { useSearchParams, useNavigate } from 'react-router-dom'
 import { stories } from '../data/stories'
 import { StoryContainer } from '../components/StoryContainer'
+import { Error } from './Error'
 
 export const StoryView = () => {
     const [searchParams] = useSearchParams()
@@ -12,17 +13,7 @@ export const StoryView = () => {
     const story = (storyId) ? stories[storyId] : null
 
     if (!story) {
-        return (
-            <div className="w-full flex-1 flex flex-col items-center justify-center">
-                <h2 className="mb-4 text-2xl font-bold text-gray-800">Story not found</h2>
-                <button
-                    onClick={() => navigate('/')}
-                    className="py-2 px-6 bg-indigo-500 rounded-full font-bold text-white transform hover:-translate-y-0.5 transition-all cursor-pointer"
-                >
-                    Back to Home
-                </button>
-            </div>
-        )
+        return <Error title="Story Not Found" message="We couldn't find the story you were looking for. It may have been removed or the link is incorrect" />
     }
 
     return (

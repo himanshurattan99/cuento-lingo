@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import { BookOpen } from 'lucide-react'
 import { Home } from './pages/Home'
 import { StoryView } from './pages/StoryView'
+import { Error } from './pages/Error'
 import './App.css'
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/story" element={<StoryView />} />
+        <Route path="*" element={<Error title="Page Not Found" message="The URL you entered doesn't match any existing pages" />} />
       </Routes>
 
       {/* Footer */}
